@@ -4,9 +4,9 @@ import { ModernTemplate } from '@/lib/pdf-templates/modern'
 import { ClassicTemplate } from '@/lib/pdf-templates/classic'
 import { ExecutiveTemplate } from '@/lib/pdf-templates/executive'
 import { sendResumeEmail } from '@/lib/resend'
-import { pdf } from '@react-pdf/renderer'
+import { pdf, Document } from '@react-pdf/renderer'
 import { GeneratedResume } from '@/types'
-import React from 'react'
+import React, { type ReactElement, type ComponentProps } from 'react'
 
 // Force Node.js runtime — required for @react-pdf/renderer
 export const runtime = 'nodejs'
@@ -89,7 +89,8 @@ export async function POST(request: Request) {
 
   let pdfBuffer: Buffer
   try {
-    const pdfInstance = pdf(React.createElement(TemplateComponent, templateProps))
+    const element = React.createElement(TemplateComponent, templateProps) as ReactElement<ComponentProps<typeof Document>>
+    const pdfInstance = pdf(element)
     pdfBuffer = await pdfInstance.toBuffer()
   } catch (err) {
     console.error('PDF render error:', err)
