@@ -91,7 +91,7 @@ export async function POST(request: Request) {
   try {
     const element = React.createElement(TemplateComponent, templateProps) as ReactElement<ComponentProps<typeof Document>>
     const pdfInstance = pdf(element)
-    pdfBuffer = await pdfInstance.toBuffer()
+    pdfBuffer = await pdfInstance.toBuffer() as unknown as Buffer
   } catch (err) {
     console.error('PDF render error:', err)
     return Response.json({ error: 'Failed to render PDF' }, { status: 500 })
