@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Download, ArrowLeft, CheckCircle, Mail, AlertCircle } from 'lucide-react'
 
@@ -12,7 +11,8 @@ import WorkExperienceStep from '@/components/resume-form/WorkExperience'
 import EducationSkills from '@/components/resume-form/EducationSkills'
 import TargetJob from '@/components/resume-form/TargetJob'
 import PaymentModal from '@/components/PaymentModal'
-import { ResumeFormData } from '@/types'
+import ResumePreview from '@/components/ResumePreview'
+import { ResumeFormData, GeneratedResume } from '@/types'
 
 const STEPS = [
   { number: 1, title: 'Personal Info' },
@@ -41,18 +41,40 @@ export default function BuildClient({
   userEmail: string
   existingPaymentId?: string
 }) {
-  const router = useRouter()
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState<ResumeFormData>(defaultFormData)
+  const [isPreviewing, setIsPreviewing] = useState(false)
+  const [previewData, setPreviewData] = useState<GeneratedResume | null>(null)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [previewError, setPreviewError] = useState('')
   const [result, setResult] = useState<{ resumeId: string; pdfUrl: string } | null>(null)
 
   function updateForm(data: Partial<ResumeFormData>) {
     setFormData((prev) => ({ ...prev, ...data }))
   }
 
+  async function handlePreview() {
+    setIsPreviewing(true)
+    setPreviewError('')
+    try {
+      const res = await fetch('/api/preview', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formData }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Preview failed')
+      setPreviewData(data.resume)
+    } catch (err: any) {
+      setPreviewError(err.message || 'Something went wrong. Please try again.')
+    } finally {
+      setIsPreviewing(false)
+    }
+  }
+
   function handleSuccess(resumeId: string, pdfUrl: string) {
     setShowPaymentModal(false)
+    setPreviewData(null)
     setResult({ resumeId, pdfUrl })
   }
 
@@ -166,21 +188,39 @@ export default function BuildClient({
                   </p>
                 </div>
               )}
+              {previewError && (
+                <div className="mb-5 flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl p-4">
+                  <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-700">{previewError}</p>
+                </div>
+              )}
               <TargetJob
                 data={formData}
                 onChange={updateForm}
-                onSubmit={() => setShowPaymentModal(true)}
+                onSubmit={handlePreview}
                 onBack={() => setStep(3)}
+                isSubmitting={isPreviewing}
               />
             </>
           )}
         </div>
       </main>
 
+      {/* Resume preview modal */}
+      {previewData && (
+        <ResumePreview
+          resume={previewData}
+          formData={formData}
+          onClose={() => setPreviewData(null)}
+          onPay={() => setShowPaymentModal(true)}
+        />
+      )}
+
       {showPaymentModal && (
         <PaymentModal
           userEmail={userEmail}
           formData={formData}
+          previewContent={previewData}
           existingPaymentId={existingPaymentId}
           onClose={() => setShowPaymentModal(false)}
           onSuccess={handleSuccess}

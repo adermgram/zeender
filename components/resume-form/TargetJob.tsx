@@ -92,7 +92,7 @@ We are looking for a Senior Software Engineer to join our team. The ideal candid
       <div className="border-t border-slate-100 pt-4">
         <p className="text-sm text-slate-500 mb-4 flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-brand-500" />
-          After clicking below, you&apos;ll be prompted to pay ₦1,000 to generate your resume.
+          Preview your AI-generated resume before paying a thing.
         </p>
         <div className="flex justify-between">
           <button type="button" onClick={onBack} className="btn-secondary" disabled={isSubmitting}>
@@ -102,12 +102,12 @@ We are looking for a Senior Software Engineer to join our team. The ideal candid
             {isSubmitting ? (
               <>
                 <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Processing...
+                Generating preview...
               </>
             ) : (
               <>
                 <Sparkles className="w-4 h-4" />
-                Pay & Generate Resume
+                Preview My Resume
               </>
             )}
           </button>

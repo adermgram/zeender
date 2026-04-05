@@ -11,7 +11,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  const { formData, paymentId } = await request.json()
+  const { formData, paymentId, previewContent } = await request.json()
 
   if (!formData || !paymentId) {
     return Response.json({ error: 'formData and paymentId are required' }, { status: 400 })
@@ -55,9 +55,9 @@ export async function POST(request: Request) {
       .eq('id', user.id)
   }
 
-  // ─── Generate via Groq ────────────────────────────────────────────────────────
+  // ─── Generate via Groq (skip if preview content already exists) ──────────────
   try {
-    const resumeContent = await generateResume(formData)
+    const resumeContent = previewContent ?? await generateResume(formData)
 
     // ─── Save to database ─────────────────────────────────────────────────────
     // Store personal info alongside AI content so the PDF route can use

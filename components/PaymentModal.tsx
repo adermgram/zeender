@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Script from 'next/script'
 import { X, CreditCard, Loader2, CheckCircle, AlertCircle, Sparkles } from 'lucide-react'
-import { ResumeFormData } from '@/types'
+import { ResumeFormData, GeneratedResume } from '@/types'
 
 declare global {
   interface Window {
@@ -26,6 +26,7 @@ type Stage =
 interface PaymentModalProps {
   userEmail: string
   formData: ResumeFormData
+  previewContent?: GeneratedResume | null
   existingPaymentId?: string
   onClose: () => void
   onSuccess: (resumeId: string, pdfUrl: string) => void
@@ -34,6 +35,7 @@ interface PaymentModalProps {
 export default function PaymentModal({
   userEmail,
   formData,
+  previewContent,
   existingPaymentId,
   onClose,
   onSuccess,
@@ -135,7 +137,7 @@ export default function PaymentModal({
       const generateRes = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ formData, paymentId }),
+        body: JSON.stringify({ formData, paymentId, previewContent }),
       })
       if (!generateRes.ok) {
         const { error } = await generateRes.json()
