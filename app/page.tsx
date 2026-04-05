@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Logo from '@/components/Logo'
+import SampleResumeSection from '@/components/SampleResumeSection'
 import {
   Zap,
   Download,
@@ -189,6 +190,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Sample Resume ───────────────────────────────────────────── */}
+      <SampleResumeSection />
 
       {/* ── Pricing ─────────────────────────────────────────────────── */}
       <section className="py-24 bg-slate-50">
