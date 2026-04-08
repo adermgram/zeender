@@ -32,7 +32,7 @@ export default function PersonalInfo({ data, onChange, onNext }: PersonalInfoPro
           <input
             type="text"
             className="input-field"
-            placeholder="e.g. Kwame Mensah"
+            placeholder="e.g. Ada Okafor"
             value={data.fullName}
             onChange={(e) => onChange({ fullName: e.target.value })}
             required
@@ -80,7 +80,7 @@ export default function PersonalInfo({ data, onChange, onNext }: PersonalInfoPro
           <input
             type="tel"
             className="input-field"
-            placeholder="+233 244 123 456"
+            placeholder="+234 812 345 6789"
             value={data.phone}
             onChange={(e) => onChange({ phone: e.target.value })}
           />
@@ -96,7 +96,7 @@ export default function PersonalInfo({ data, onChange, onNext }: PersonalInfoPro
         <input
           type="text"
           className="input-field"
-          placeholder="e.g. Accra, Ghana"
+          placeholder="e.g. Lagos, Nigeria"
           value={data.location}
           onChange={(e) => onChange({ location: e.target.value })}
         />

@@ -11,14 +11,14 @@ export async function POST() {
   }
 
   // Create a unique reference
-  const reference = `cv_${user.id.slice(0, 8)}_${Date.now()}`
+  const reference = `resume_${user.id.slice(0, 8)}_${Date.now()}`
 
   const { data: payment, error } = await supabase
     .from('payments')
     .insert({
       user_id: user.id,
       paystack_reference: reference,
-      amount: 1000, // GH₵10 in pesewas — ALWAYS set server-side, never trust frontend
+      amount: 100000, // ₦1,000 in kobo — ALWAYS set server-side, never trust frontend
       status: 'pending',
     })
     .select()
@@ -32,6 +32,6 @@ export async function POST() {
   return Response.json({
     reference,
     paymentId: payment.id,
-    amount: 1000,
+    amount: 100000,
   })
 }

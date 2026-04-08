@@ -3,9 +3,7 @@ import nodemailer from 'nodemailer'
 // Gmail SMTP transport — uses an App Password, not your real Gmail password.
 // Setup: Google Account → Security → 2-Step Verification → App Passwords → create one
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // STARTTLS
+  service: 'gmail',
   auth: {
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_APP_PASSWORD,

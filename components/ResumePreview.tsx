@@ -18,7 +18,7 @@ export default function ResumePreview({ resume, formData, onPay, onClose }: Resu
         {/* Top bar */}
         <div className="bg-white rounded-t-2xl px-5 py-4 flex items-center justify-between border-b border-slate-100">
           <div>
-            <p className="font-bold text-slate-900 text-[15px]">Your CV Preview</p>
+            <p className="font-bold text-slate-900 text-[15px]">Your Resume Preview</p>
             <p className="text-xs text-slate-400 mt-0.5">Pay to unlock the full PDF download</p>
           </div>
           <button
@@ -142,13 +142,13 @@ export default function ResumePreview({ resume, formData, onPay, onClose }: Resu
                 <div className="w-16 h-16 bg-brand-50 border border-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Lock className="w-7 h-7 text-brand-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Your CV is ready!</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Your resume is ready!</h3>
                 <p className="text-slate-500 text-sm mb-6 max-w-xs mx-auto leading-relaxed">
-                  Pay GH₵10 to unlock the full PDF — formatted, ATS-optimized, and sent to your email.
+                  Pay ₦1,000 to unlock the full PDF — formatted, ATS-optimized, and sent to your email.
                 </p>
                 <button onClick={onPay} className="btn-primary px-8 py-4 text-base shadow-lg shadow-brand-100">
                   <Download className="w-5 h-5" />
-                  Pay GH₵10 &amp; Download PDF
+                  Pay ₦1,000 &amp; Download PDF
                 </button>
                 <p className="text-xs text-slate-400 mt-3">Secure payment via Paystack · One-time</p>
               </div>

@@ -4,18 +4,18 @@ import { ResumeFormData, GeneratedResume } from '@/types'
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
 export async function generateResume(formData: ResumeFormData): Promise<GeneratedResume> {
-  const systemPrompt = `You are an expert professional CV writer with 15+ years of experience crafting compelling, ATS-optimized CVs that get interviews at top companies. You deeply understand how Applicant Tracking Systems work and you mirror the language of the job description to maximize keyword matching.
+  const systemPrompt = `You are an expert professional resume writer with 15+ years of experience crafting compelling, ATS-optimized resumes that get interviews at top companies. You deeply understand how Applicant Tracking Systems work and you mirror the language of the job description to maximize keyword matching.
 
-Your task: analyze the candidate's background and the target job description, then produce a polished, powerful CV in valid JSON only.
+Your task: analyze the candidate's background and the target job description, then produce a polished, powerful resume in valid JSON only.
 
 Rules:
 - Return ONLY valid JSON. No markdown. No code fences. No explanation before or after.
 - Write bullet points that lead with strong action verbs (Engineered, Led, Reduced, Launched, etc.)
-- Quantify achievements wherever reasonable (%, GH₵, users, time saved, etc.)
+- Quantify achievements wherever reasonable (%, ₦, users, time saved, etc.)
 - The summary must be 3–4 sentences, tailored to the specific role
 - Skills must reflect what the job description explicitly asks for, plus the candidate's genuine skills`
 
-  const userPrompt = `Create a professional CV for this candidate targeting the role below.
+  const userPrompt = `Create a professional resume for this candidate targeting the role below.
 
 ═══ CANDIDATE INFO ═══
 Full Name: ${formData.fullName}

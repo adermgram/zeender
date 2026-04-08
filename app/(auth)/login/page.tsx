@@ -45,7 +45,7 @@ export default function LoginPage() {
           </div>
           <h1 className="text-2xl font-bold text-slate-900">Welcome back</h1>
           <p className="text-slate-500 mt-2 text-sm">
-            Sign in to build your professional CV
+            Sign in to build your professional resume
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-sm text-slate-400 mt-6">
-          GH₵10 per CV &middot; No subscription needed
+          ₦1,000 per resume &middot; No subscription needed
         </p>
       </div>
     </div>
