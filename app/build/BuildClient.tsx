@@ -87,10 +87,10 @@ export default function BuildClient({
               <CheckCircle className="w-10 h-10 text-emerald-600" />
             </div>
             <h1 className="text-2xl font-bold text-slate-900 mb-2">
-              Your Resume is Ready! 🎉
+              Your CV is Ready! 🎉
             </h1>
             <p className="text-slate-500 text-sm leading-relaxed mb-6">
-              Your AI-generated resume PDF has been created and sent to{' '}
+              Your AI-generated CV PDF has been created and sent to{' '}
               <span className="font-medium text-slate-700">{userEmail}</span>.
               Check your inbox (and spam folder).
             </p>
@@ -112,7 +112,7 @@ export default function BuildClient({
                 }}
                 className="btn-secondary w-full"
               >
-                Build Another Resume
+                Build Another CV
               </button>
               <Link href="/dashboard" className="block text-sm text-slate-400 hover:text-slate-600 transition-colors mt-2">
                 Go to Dashboard →
@@ -184,7 +184,7 @@ export default function BuildClient({
                 <div className="mb-5 flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4">
                   <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                   <p className="text-sm text-amber-800">
-                    <span className="font-semibold">No payment needed.</span> Your previous payment of ₦1,000 is being applied to this resume.
+                    <span className="font-semibold">No payment needed.</span> Your previous payment of GH₵10 is being applied to this CV.
                   </p>
                 </div>
               )}

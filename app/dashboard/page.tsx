@@ -78,7 +78,7 @@ export default async function DashboardPage() {
                   className="w-8 h-8 rounded-full ring-2 ring-slate-100"
                 />
               ) : (
-                <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-violet-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-gold-400 text-white rounded-full flex items-center justify-center text-sm font-bold">
                   {initial}
                 </div>
               )}
@@ -116,7 +116,7 @@ export default async function DashboardPage() {
                   You have {unusedPayments.length} unused payment{unusedPayments.length > 1 ? 's' : ''}
                 </p>
                 <p className="text-amber-700 text-xs mt-0.5 leading-relaxed">
-                  You paid but didn&apos;t finish generating your resume. No need to pay again — pick up right where you left off.
+                  You paid but didn&apos;t finish generating your CV. No need to pay again — pick up right where you left off.
                 </p>
               </div>
             </div>
@@ -138,13 +138,13 @@ export default async function DashboardPage() {
             </h1>
             <p className="text-slate-500 mt-1 text-sm">
               {resumes && resumes.length > 0
-                ? `You have ${resumes.length} resume${resumes.length > 1 ? 's' : ''} ready to use.`
-                : "You haven't built a resume yet. Let's fix that."}
+                ? `You have ${resumes.length} CV${resumes.length > 1 ? 's' : ''} ready to use.`
+                : "You haven't built a CV yet. Let's fix that."}
             </p>
           </div>
           <Link href="/build" className="btn-primary shrink-0">
             <Plus className="w-4 h-4" />
-            Build New Resume
+            Build New CV
           </Link>
         </div>
 
@@ -152,7 +152,7 @@ export default async function DashboardPage() {
         <div className="grid grid-cols-3 gap-4 mb-10">
           <div className="bg-white border border-slate-100 rounded-2xl p-5 text-center shadow-sm">
             <p className="text-3xl font-extrabold text-slate-900">{resumes?.length ?? 0}</p>
-            <p className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wide">Resumes</p>
+            <p className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wide">CVs</p>
           </div>
           <div className="bg-white border border-slate-100 rounded-2xl p-5 text-center shadow-sm">
             <p className="text-3xl font-extrabold text-emerald-500">
@@ -162,7 +162,7 @@ export default async function DashboardPage() {
           </div>
           <div className="bg-white border border-slate-100 rounded-2xl p-5 text-center shadow-sm">
             <p className="text-3xl font-extrabold text-brand-600">
-              ₦{((resumes?.length ?? 0) * 1000).toLocaleString()}
+              GH₵{((resumes?.length ?? 0) * 10).toLocaleString()}
             </p>
             <p className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wide">Invested</p>
           </div>
@@ -174,13 +174,13 @@ export default async function DashboardPage() {
             <div className="w-20 h-20 bg-brand-50 border border-brand-100 rounded-3xl flex items-center justify-center mx-auto mb-5">
               <Sparkles className="w-9 h-9 text-brand-400" />
             </div>
-            <h3 className="font-bold text-slate-900 text-xl mb-2">No resumes yet</h3>
+            <h3 className="font-bold text-slate-900 text-xl mb-2">No CVs yet</h3>
             <p className="text-slate-400 text-sm mb-8 max-w-xs mx-auto leading-relaxed">
-              Build your first AI-powered resume and get it delivered to your inbox in minutes.
+              Build your first AI-powered CV and get it delivered to your inbox in minutes.
             </p>
             <Link href="/build" className="btn-primary">
               <Plus className="w-4 h-4" />
-              Build Your First Resume
+              Build Your First CV
             </Link>
           </div>
         ) : (
@@ -190,16 +190,16 @@ export default async function DashboardPage() {
                 experience?: { role: string; company: string }[]
                 _personal?: { fullName: string; jobTitle: string }
               }
-              const title = content?._personal?.jobTitle || content?.experience?.[0]?.role || 'Professional Resume'
+              const title = content?._personal?.jobTitle || content?.experience?.[0]?.role || 'Professional CV'
               const name = content?._personal?.fullName || content?.experience?.[0]?.company || ''
-              const date = new Date(resume.created_at).toLocaleDateString('en-NG', {
+              const date = new Date(resume.created_at).toLocaleDateString('en-GH', {
                 day: 'numeric', month: 'short', year: 'numeric',
               })
 
               return (
                 <div key={resume.id} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-start justify-between gap-3">
-                    <div className="w-11 h-11 bg-gradient-to-br from-brand-50 to-violet-50 border border-brand-100 rounded-xl flex items-center justify-center shrink-0">
+                    <div className="w-11 h-11 bg-gradient-to-br from-brand-50 to-gold-50 border border-brand-100 rounded-xl flex items-center justify-center shrink-0">
                       <FileText className="w-5 h-5 text-brand-500" />
                     </div>
                     <div className="flex-1 min-w-0">

@@ -52,9 +52,9 @@ export async function POST(request: Request) {
   }
 
   // ─── CRITICAL: Verify amount server-side — never trust the client ─────────
-  if (paystackData.data.amount !== 100000) {
+  if (paystackData.data.amount !== 1000) {
     return Response.json(
-      { error: 'Invalid payment amount. Expected ₦1,000.' },
+      { error: 'Invalid payment amount. Expected GH₵10.' },
       { status: 400 }
     )
   }

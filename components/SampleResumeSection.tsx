@@ -5,35 +5,35 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 const person = {
-  name: 'Chidera Okonkwo',
+  name: 'Kwame Mensah',
   title: 'Senior Software Engineer',
-  email: 'chidera.okonkwo@email.com',
-  phone: '+234 801 234 5678',
-  location: 'Lagos, Nigeria',
+  email: 'kwame.mensah@email.com',
+  phone: '+233 244 123 456',
+  location: 'Accra, Ghana',
   summary:
     'Results-driven Senior Software Engineer with 5+ years of experience building scalable fintech products across web and mobile platforms. Proven track record of reducing system latency by 40% and leading cross-functional teams to ship features on time. Passionate about clean architecture and delivering measurable business impact.',
   experience: [
     {
       role: 'Senior Software Engineer',
-      company: 'Flutterwave',
+      company: 'MTN Ghana',
       duration: 'Jan 2022 – Present',
       bullets: [
-        'Architected a real-time payment notification system processing 2M+ transactions daily, reducing latency by 40%',
+        'Architected a real-time mobile money notification system processing 2M+ transactions daily, reducing latency by 40%',
         'Led a team of 6 engineers to rebuild the merchant dashboard in React + TypeScript, cutting load time from 4.2s to 1.1s',
         'Designed REST APIs consumed by 300+ enterprise partners, maintaining 99.98% uptime SLA',
       ],
     },
     {
       role: 'Software Engineer',
-      company: 'Interswitch Group',
+      company: 'Ecobank Ghana',
       duration: 'Mar 2019 – Dec 2021',
       bullets: [
-        'Built and maintained core banking integrations using Node.js, serving 500K+ active cardholders',
+        'Built and maintained core banking integrations using Node.js, serving 500K+ active customers across West Africa',
         'Reduced deployment time by 65% by introducing CI/CD pipelines with GitHub Actions and Docker',
       ],
     },
   ],
-  education: { degree: 'B.Sc. Computer Science', school: 'University of Lagos', year: '2018 · First Class Honours' },
+  education: { degree: 'B.Sc. Computer Science', school: 'University of Ghana, Legon', year: '2018 · First Class Honours' },
   skills: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'AWS', 'Docker', 'GraphQL', 'Redis'],
 }
 
@@ -180,7 +180,7 @@ function ExecutiveResume() {
       <div className="bg-slate-800 sm:w-56 shrink-0 px-6 py-8 text-white">
         <div className="mb-6">
           <h1 className="text-lg font-extrabold leading-tight">{person.name}</h1>
-          <p className="text-amber-400 font-semibold text-xs mt-1">{person.title}</p>
+          <p className="text-gold-400 font-semibold text-xs mt-1">{person.title}</p>
         </div>
         <div className="mb-6">
           <h2 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-2">Contact</h2>
@@ -208,25 +208,25 @@ function ExecutiveResume() {
       {/* Main */}
       <div className="flex-1 px-7 py-8 space-y-5">
         <div>
-          <h2 className="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-2">Summary</h2>
+          <h2 className="text-[10px] font-bold text-gold-500 uppercase tracking-widest mb-2">Summary</h2>
           <p className="text-xs text-slate-700 leading-relaxed">{person.summary}</p>
         </div>
         <div>
-          <h2 className="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-3">Experience</h2>
+          <h2 className="text-[10px] font-bold text-gold-500 uppercase tracking-widest mb-3">Experience</h2>
           <div className="space-y-4">
             {person.experience.map((exp, i) => (
               <div key={i}>
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="font-bold text-slate-900 text-sm">{exp.role}</p>
-                    <p className="text-amber-600 text-xs font-semibold">{exp.company}</p>
+                    <p className="text-gold-600 text-xs font-semibold">{exp.company}</p>
                   </div>
                   <p className="text-xs text-slate-400 shrink-0 ml-4">{exp.duration}</p>
                 </div>
                 <ul className="mt-1.5 space-y-1">
                   {exp.bullets.map((b, j) => (
                     <li key={j} className="text-xs text-slate-600 flex gap-2">
-                      <span className="text-amber-400 shrink-0">›</span>{b}
+                      <span className="text-gold-400 shrink-0">›</span>{b}
                     </li>
                   ))}
                 </ul>
@@ -252,7 +252,7 @@ export default function SampleResumeSection() {
             See what you&apos;ll get
           </h2>
           <p className="text-lg text-slate-500 max-w-xl mx-auto">
-            Real output from Zeender — AI-written, tailored to a job description. Choose a template style below.
+            Real output from cvMaxGhana — AI-written, tailored to a job description. Choose a template style below.
           </p>
         </div>
 
@@ -283,7 +283,7 @@ export default function SampleResumeSection() {
             <div className="w-3 h-3 rounded-full bg-amber-300" />
             <div className="w-3 h-3 rounded-full bg-emerald-300" />
             <div className="ml-3 flex-1 bg-white border border-slate-200 rounded-md px-3 py-1 text-xs text-slate-400">
-              zeender-resume-chidera-okonkwo-{active.toLowerCase()}.pdf
+              cvmaxghana-cv-kwame-mensah-{active.toLowerCase()}.pdf
             </div>
           </div>
 
@@ -294,7 +294,7 @@ export default function SampleResumeSection() {
 
           {/* Footer strip */}
           <div className="bg-brand-50 border-t border-brand-100 px-8 sm:px-12 py-4 flex items-center justify-between">
-            <p className="text-xs text-brand-600 font-medium">Generated by Zeender · ATS-optimized · {active} template</p>
+            <p className="text-xs text-brand-600 font-medium">Generated by cvMaxGhana · ATS-optimized · {active} template</p>
             <Link href="/login" className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
               Build yours <ArrowRight className="w-3 h-3" />
             </Link>

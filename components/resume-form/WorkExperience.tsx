@@ -121,7 +121,7 @@ export default function WorkExperienceStep({
               <textarea
                 className="input-field resize-none"
                 rows={4}
-                placeholder="Describe what you did, built, or achieved. Include numbers where possible — e.g. 'Reduced API latency by 40%', 'Led a team of 5 engineers', 'Increased revenue by ₦2M through automation'."
+                placeholder="Describe what you did, built, or achieved. Include numbers where possible — e.g. 'Reduced API latency by 40%', 'Led a team of 5 engineers', 'Increased revenue by GH₵50K through automation'."
                 value={job.description}
                 onChange={(e) => updateJob(index, 'description', e.target.value)}
                 required

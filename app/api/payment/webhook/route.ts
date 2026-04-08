@@ -1,6 +1,8 @@
 import crypto from 'crypto'
 import { createClient } from '@supabase/supabase-js'
 
+export const runtime = 'nodejs'
+
 // Use service role for webhook — no user session context
 function getServiceClient() {
   return createClient(
@@ -33,7 +35,7 @@ export async function POST(request: Request) {
     const { reference, amount, customer } = event.data
 
     // Only process the expected amount
-    if (amount !== 100000) {
+    if (amount !== 1000) {
       return Response.json({ received: true })
     }
 

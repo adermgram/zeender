@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Zeender — Build a Job-Winning Resume in Minutes',
+  title: 'cvMaxGhana — Build a Job-Winning CV in Minutes',
   description:
-    'AI-powered resume builder that tailors your resume to any job description. Pay ₦1,000 per resume and get a professional PDF delivered to your inbox.',
-  keywords: 'resume builder, AI resume, professional resume, Nigeria, job application, Zeender',
+    'AI-powered CV builder that tailors your CV to any job description. Pay GH₵10 per CV and get a professional PDF delivered to your inbox.',
+  keywords: 'CV builder, AI CV, professional CV, Ghana, job application, cvMaxGhana, curriculum vitae',
 }
 
 export default function RootLayout({

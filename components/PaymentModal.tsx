@@ -83,8 +83,8 @@ export default function PaymentModal({
         email: userEmail,
         amount,
         ref: reference,
-        currency: 'NGN',
-        label: 'Resume Generation — ₦1,000',
+        currency: 'GHS',
+        label: 'CV Generation — GH₵10',
         callback: function (transaction: { reference: string }) {
           paymentHandled = true
           handlePopupClosed(transaction.reference)
@@ -141,7 +141,7 @@ export default function PaymentModal({
       })
       if (!generateRes.ok) {
         const { error } = await generateRes.json()
-        throw new Error(error || 'Resume generation failed')
+        throw new Error(error || 'CV generation failed')
       }
       const { resumeId } = await generateRes.json()
 
@@ -162,7 +162,7 @@ export default function PaymentModal({
       onSuccess(resumeId, pdfUrl)
     } catch (err: unknown) {
       setStage('error')
-      setError(err instanceof Error ? err.message : 'Something went wrong generating your resume.')
+      setError(err instanceof Error ? err.message : 'Something went wrong generating your CV.')
     }
   }
 
@@ -171,7 +171,7 @@ export default function PaymentModal({
     initializing: 'Preparing secure payment...',
     payment: 'Complete payment in the Paystack window',
     verifying: 'Verifying your payment...',
-    generating: 'AI is writing your resume... (15–30s)',
+    generating: 'AI is writing your CV... (15–30s)',
     pdf: 'Generating your PDF...',
     success: 'Done!',
     error: 'Something went wrong',
@@ -211,7 +211,7 @@ export default function PaymentModal({
               <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Your resume is ready! 🎉</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Your CV is ready! 🎉</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
                 A professional PDF has been generated and sent to{' '}
                 <span className="font-medium text-slate-700">{userEmail}</span>.
@@ -257,9 +257,9 @@ export default function PaymentModal({
               {/* Progress steps */}
               <div className="space-y-2 text-left mb-4">
                 {([
-                  { stages: ['verifying', 'generating', 'pdf', 'success'], label: 'Secure payment — ₦1,000' },
+                  { stages: ['verifying', 'generating', 'pdf', 'success'], label: 'Secure payment — GH₵10' },
                   { stages: ['generating', 'pdf', 'success'],              label: 'Payment verified' },
-                  { stages: ['pdf', 'success'],                            label: 'AI writing your resume' },
+                  { stages: ['pdf', 'success'],                            label: 'AI writing your CV' },
                   { stages: ['success'],                                   label: 'Generating PDF' },
                 ] as { stages: Stage[]; label: string }[]).map((item, i) => {
                   const isDone = item.stages.includes(stage)
